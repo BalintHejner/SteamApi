@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SteamApp.MainPage" Title="">
+    <Grid RowDefinitions="*,*,*">
+        <ImageButton Source="steamlogo.png" Grid.Row="0" HeightRequest="150"/>
+        <StackLayout Orientation="Vertical" Grid.Row="1" WidthRequest="200">
+            <Label Text="STEAM ID:" HorizontalTextAlignment="Center" FontSize="18" FontAttributes="Bold"/>
+            <Border>
+                <Entry x:Name="id_Ent" HorizontalTextAlignment="Center" Text="{Binding SteamUser}"/>
+            </Border>
+        </StackLayout>
+        <Button x:Name="keres_BTN" Text="Keres" Grid.Row="2" WidthRequest="200" HeightRequest="50" CornerRadius="0" FontAttributes="Bold" TextColor="WhiteSmoke" FontSize="18" Command="{Binding LoginCommand}"/>
+    </Grid>
+</ContentPage>

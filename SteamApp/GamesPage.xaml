@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SteamApp.GamesPage"
+             Title="GamesPage">
+    <ScrollView>
+        <VerticalStackLayout>
+            <Grid ColumnDefinitions="*,*" HeightRequest="100">
+                <Grid.Resources>
+                    <Style TargetType="Label">
+                        <Setter Property="FontAttributes" Value="Bold"/>
+                        <Setter Property="VerticalOptions" Value="Center"/>
+                        <Setter Property="HorizontalOptions" Value="Center"/>
+                        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                    </Style>
+                </Grid.Resources>
+                <StackLayout VerticalOptions="Center">
+                    <Label Text="Játékok száma:"/>
+                    <Label Text="{Binding Games.Count}"/>
+                </StackLayout>
+                <StackLayout VerticalOptions="Center" Grid.Column="1">
+                    <Label Text="Játszott órák száma:"/>
+                    <Label Text="{Binding Sum_of_playtime}"/>
+                </StackLayout>
+            </Grid>
+            <ListView x:Name="games_LV" SelectedItem="{Binding SelectedGame}" ItemsSource="{Binding Games}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="Auto,Auto">
+                                <Image Grid.RowSpan="2" WidthRequest="100" Source="{Binding img_url}"/>
+                                <Label Grid.Column="1" FontAttributes="Bold" Text="{Binding name}"/>
+                                <Label Grid.Column="1" Grid.Row="1" FontAttributes="Italic" Text="{Binding playtime_forever_hours, StringFormat='Összes játékóra: {0} óra'}"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
